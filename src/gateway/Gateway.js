@@ -1,6 +1,6 @@
-const baseUrl = "https://61488a44035b3600175b9eb9.mockapi.io/FFF";
+const baseUrl = "https://617a7648cb1efe001700fe9b.mockapi.io/Calendar";
 
-export const sendEventToApi = (eventData) =>
+export const sendEvent = (eventData) =>
   fetch(baseUrl, {
     method: "POST",
     headers: {

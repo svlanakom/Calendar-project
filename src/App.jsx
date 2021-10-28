@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import Header from "./components/header/Header.jsx";
 import Calendar from "./components/calendar/Calendar.jsx";
 import Modal from "./components/modal/Modal.jsx";
-
+import { sendEvent, fetchEvents, deleteEvent } from "./gateway/Gateway";
 import { getWeekStartDate, generateWeekRange } from "../src/utils/dateUtils.js";
 
 import "./common.scss";
-import { createEvent, fetchEvents, removeEvent } from "./gateway/Gateway.js";
 
 const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
@@ -64,11 +63,11 @@ const App = () => {
       dateFrom: new Date(`${date} ${startTime}`),
       dateTo: new Date(`${date} ${endTime}`),
     };
-    createEvent(newEvent).then(() => getEvents());
+    sendEvent(newEvent).then(() => getEvents());
   };
 
   const removeEvent = (id) => {
-    removeEvent(id).then(() => getEvents());
+    deleteEvent(id).then(() => getEvents());
   };
 
   React.useEffect(() => {

@@ -5,7 +5,7 @@ import "./sidebar.scss";
 const Sidebar = (props) => {
   const hours = Array(24)
     .fill()
-    .map((val, index) => index);
+    .map((val, index) => index); // creating array with hours from 0 to 24
 
   return (
     <div className="calendar__time-scale">
