@@ -30,16 +30,8 @@ const App = () => {
     setWeekStartDate(new Date());
   };
 
-  const toggleModal = (e) => {
-    const target = e.target;
-    if (
-      target.classList.contains("create-event-btn") ||
-      target.classList.contains("create-event__close-btn") ||
-      target.classList.contains("overlay") ||
-      target.classList.contains("event-form")
-    ) {
-      setIsShowModal(!isShowModal);
-    }
+  const toggleModal = () => {
+    setIsShowModal(!isShowModal);
   };
 
   const getEvents = () =>
@@ -63,7 +55,9 @@ const App = () => {
       dateFrom: new Date(`${date} ${startTime}`),
       dateTo: new Date(`${date} ${endTime}`),
     };
-    sendEvent(newEvent).then(() => getEvents());
+    sendEvent(newEvent)
+      .then(() => getEvents())
+      .then(() => setIsShowModal(false));
   };
 
   const removeEvent = (id) => {
